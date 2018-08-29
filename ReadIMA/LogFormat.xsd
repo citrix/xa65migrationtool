@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LogFormat"
+           targetNamespace="LogFormat.xsd"
+           elementFormDefault="qualified"
+           xmlns="LogFormat.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:NS="LogFormat.xsd">
+  <xs:simpleType name="LogType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Message" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LogEntries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="LogEntry" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="LogType" type="LogType" />
+                <xs:attribute name="TimeStamp" type="xs:string" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PolicyData"
+           targetNamespace="PolicyData.xsd"
+           elementFormDefault="qualified"
+           xmlns="PolicyData.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:NS="PolicyData.xsd">
+
+  <xs:simpleType name="SettingState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Enabled" />
+      <xs:enumeration value="Disabled" />
+      <xs:enumeration value="NotConfigured" />
+      <xs:enumeration value="Allowed" />
+      <xs:enumeration value="Prohibited" />
+      <xs:enumeration value="UseDefault" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SettingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AcceptWebSocketsConnections" />
+      <xs:enumeration value="ACRTimeout" />
+      <xs:enumeration value="AdvanceWarningFrequency" />
+      <xs:enumeration value="AdvanceWarningMessageBody" />
+      <xs:enumeration value="AdvanceWarningMessageTitle" />
+      <xs:enumeration value="AdvanceWarningPeriod" />
+      <xs:enumeration value="AeroRedirection" />
+      <xs:enumeration value="AgentTaskInterval" />
+      <xs:enumeration value="AllowBidirectionalContentRedirection" />
+      <xs:enumeration value="AllowFileDownload" />
+      <xs:enumeration value="AllowFileTransfer" />
+      <xs:enumeration value="AllowFileUpload" />
+      <xs:enumeration value="AllowLocalAppAccess" />
+      <xs:enumeration value="AllowLocationServices" />
+      <xs:enumeration value="AllowRtpAudio" />
+      <xs:enumeration value="AllowSpeedFlash" />
+      <xs:enumeration value="AllowVisuallyLosslessCompression" />
+      <xs:enumeration value="AppFailureExclusionList" />
+      <xs:enumeration value="ApplicationLaunchWaitTimeout" />
+      <xs:enumeration value="ApplicationStartDetails" />
+      <xs:enumeration value="AppVServers" />
+      <xs:enumeration value="AsynchronousWrites" />
+      <xs:enumeration value="AudioBandwidthLimit" />
+      <xs:enumeration value="AudioBandwidthPercent" />
+      <xs:enumeration value="AudioPlugNPlay" />
+      <xs:enumeration value="AudioQuality" />
+      <xs:enumeration value="AutoClientReconnect" />
+      <xs:enumeration value="AutoClientReconnectAuthenticationRequired" />
+      <xs:enumeration value="AutoClientReconnectLogging" />
+      <xs:enumeration value="AutoConnectDrives" />
+      <xs:enumeration value="AutoCreatePDFPrinter" />
+      <xs:enumeration value="AutoCreationEventLogPreference" />
+      <xs:enumeration value="AutoKeyboardPopUp" />
+      <xs:enumeration value="CEIPEnabled" />
+      <xs:enumeration value="ClientAudioRedirection" />
+      <xs:enumeration value="ClientClipboardWriteAllowedFormats" />
+      <xs:enumeration value="ClientComPortRedirection" />
+      <xs:enumeration value="ClientComPortsAutoConnection" />
+      <xs:enumeration value="ClientDriveLetterPreservation" />
+      <xs:enumeration value="ClientDriveRedirection" />
+      <xs:enumeration value="ClientFixedDrives" />
+      <xs:enumeration value="ClientFloppyDrives" />
+      <xs:enumeration value="ClientLptPortRedirection" />
+      <xs:enumeration value="ClientLptPortsAutoConnection" />
+      <xs:enumeration value="ClientNetworkDrives" />
+      <xs:enumeration value="ClientOpticalDrives" />
+      <xs:enumeration value="ClientPrinterAutoCreation" />
+      <xs:enumeration value="ClientPrinterNames" />
+      <xs:enumeration value="ClientPrinterRedirection" />
+      <xs:enumeration value="ClientRemoveableDrives" />
+      <xs:enumeration value="ClientURLs" />
+      <xs:enumeration value="ClientUsbDeviceOptimizationRules" />
+      <xs:enumeration value="ClipboardBandwidthLimit" />
+      <xs:enumeration value="ClipboardBandwidthPercent" />
+      <xs:enumeration value="ClipboardRedirection" />
+      <xs:enumeration value="ClipboardSelectionUpdateMode" />
+      <xs:enumeration value="ComboboxRemoting" />
+      <xs:enumeration value="ComPortBandwidthLimit" />
+      <xs:enumeration value="ComPortBandwidthPercent" />
+      <xs:enumeration value="ConcurrentLogOnLimit" />
+      <xs:enumeration value="ConcurrentLogonsTolerance" />
+      <xs:enumeration value="ConnectionAccessControl" />
+      <xs:enumeration value="ControllerRegistrationIPv6Netmask" />
+      <xs:enumeration value="ControllerRegistrationPort" />
+      <xs:enumeration value="Controllers" />
+      <xs:enumeration value="ControllerSIDs" />
+      <xs:enumeration value="CPEnable" />
+      <xs:enumeration value="CPMigrationFromBaseProfileToCPStore" />
+      <xs:enumeration value="CPPathData" />
+      <xs:enumeration value="CPSchemaPathData" />
+      <xs:enumeration value="CpuManagementServerLevel" />
+      <xs:enumeration value="CPUserGroups_Part" />
+      <xs:enumeration value="CPUUsage" />
+      <xs:enumeration value="CPUUsageExcludedProcessPriority" />
+      <xs:enumeration value="CPUUsageMonitoring_Enable" />
+      <xs:enumeration value="CPUUsageMonitoring_Period" />
+      <xs:enumeration value="CPUUsageMonitoring_Threshold" />
+      <xs:enumeration value="DATPath_Part" />
+      <xs:enumeration value="DebugFilePath_Part" />
+      <xs:enumeration value="DebugMode" />
+      <xs:enumeration value="DefaultClientPrinter" />
+      <xs:enumeration value="DefaultExclusionList" />
+      <xs:enumeration value="DefaultExclusionListSyncDir" />
+      <xs:enumeration value="DeleteCachedProfilesOnLogoff" />
+      <xs:enumeration value="DesktopLaunchForNonAdmins" />
+      <xs:enumeration value="DesktopWallpaper" />
+      <xs:enumeration value="DirectConnectionsToPrintServers" />
+      <xs:enumeration value="DisableDynamicConfig" />
+      <xs:enumeration value="DiskUsage" />
+      <xs:enumeration value="DisplayDegradePreference" />
+      <xs:enumeration value="DisplayDegradeUserNotification" />
+      <xs:enumeration value="DisplayMemoryLimit" />
+      <xs:enumeration value="DnsAddressResolution" />
+      <xs:enumeration value="DPILimit" />
+      <xs:enumeration value="DynamicPreview" />
+      <xs:enumeration value="EMFProcessingMode" />
+      <xs:enumeration value="EnableAppFailureMonitoring" />
+      <xs:enumeration value="EnableAutoUpdateOfControllers" />
+      <xs:enumeration value="EnableautoUpdateOfControllers" />
+      <xs:enumeration value="EnableFramehawkDisplayChannel" />
+      <xs:enumeration value="EnableHeavyweightCompression" />
+      <xs:enumeration value="EnableLossless" />
+      <xs:enumeration value="EnableProcessMonitoring" />
+      <xs:enumeration value="EnableResourceMonitoring" />
+      <xs:enumeration value="EnableWorkstationVDAFaultMonitoring" />
+      <xs:enumeration value="EnhancedCompatibility" />
+      <xs:enumeration value="EnhancedCompatibilityPrograms" />
+      <xs:enumeration value="EnhancedDesktopExperience" />
+      <xs:enumeration value="ExcludedGroups_Part" />
+      <xs:enumeration value="ExclusionDefaultDir01" />
+      <xs:enumeration value="ExclusionDefaultDir02" />
+      <xs:enumeration value="ExclusionDefaultDir03" />
+      <xs:enumeration value="ExclusionDefaultDir04" />
+      <xs:enumeration value="ExclusionDefaultDir05" />
+      <xs:enumeration value="ExclusionDefaultDir06" />
+      <xs:enumeration value="ExclusionDefaultDir07" />
+      <xs:enumeration value="ExclusionDefaultDir08" />
+      <xs:enumeration value="ExclusionDefaultDir09" />
+      <xs:enumeration value="ExclusionDefaultDir10" />
+      <xs:enumeration value="ExclusionDefaultDir11" />
+      <xs:enumeration value="ExclusionDefaultDir12" />
+      <xs:enumeration value="ExclusionDefaultDir13" />
+      <xs:enumeration value="ExclusionDefaultDir14" />
+      <xs:enumeration value="ExclusionDefaultDir15" />
+      <xs:enumeration value="ExclusionDefaultDir16" />
+      <xs:enumeration value="ExclusionDefaultDir17" />
+      <xs:enumeration value="ExclusionDefaultDir18" />
+      <xs:enumeration value="ExclusionDefaultDir19" />
+      <xs:enumeration value="ExclusionDefaultDir20" />
+      <xs:enumeration value="ExclusionDefaultDir21" />
+      <xs:enumeration value="ExclusionDefaultDir22" />
+      <xs:enumeration value="ExclusionDefaultDir23" />
+      <xs:enumeration value="ExclusionDefaultDir24" />
+      <xs:enumeration value="ExclusionDefaultDir25" />
+      <xs:enumeration value="ExclusionDefaultDir26" />
+      <xs:enumeration value="ExclusionDefaultDir27" />
+      <xs:enumeration value="ExclusionDefaultDir28" />
+      <xs:enumeration value="ExclusionDefaultDir29" />
+      <xs:enumeration value="ExclusionDefaultDir30" />
+      <xs:enumeration value="ExclusionDefaultReg01" />
+      <xs:enumeration value="ExclusionDefaultReg02" />
+      <xs:enumeration value="ExclusionDefaultReg03" />
+      <xs:enumeration value="ExclusionList_Part" />
+      <xs:enumeration value="ExclusionListSyncDir_Part" />
+      <xs:enumeration value="ExclusionListSyncFiles_Part" />
+      <xs:enumeration value="ExtraColorCompression" />
+      <xs:enumeration value="ExtraColorCompressionThreshold" />
+      <xs:enumeration value="FarmName" />
+      <xs:enumeration value="FileRedirectionBandwidthLimit" />
+      <xs:enumeration value="FileRedirectionBandwidthPercent" />
+      <xs:enumeration value="FilterAdapterAddresses" />
+      <xs:enumeration value="FilterAdapterAddressesPrograms" />
+      <xs:enumeration value="FinalForceLogoffMessageBody" />
+      <xs:enumeration value="FinalForceLogoffMessageTitle" />
+      <xs:enumeration value="FlashAcceleration" />
+      <xs:enumeration value="FlashBackwardsCompatibility" />
+      <xs:enumeration value="FlashClientContentURLRewritingRules" />
+      <xs:enumeration value="FlashDefaultBehavior" />
+      <xs:enumeration value="FlashEventLogging" />
+      <xs:enumeration value="FlashIntelligentFallback" />
+      <xs:enumeration value="FlashLatencyThreshold" />
+      <xs:enumeration value="FlashServerSideContentFetchingWhitelist" />
+      <xs:enumeration value="FlashUrlBlacklist" />
+      <xs:enumeration value="FlashUrlColorList" />
+      <xs:enumeration value="FlashUrlCompatibilityList" />
+      <xs:enumeration value="ForceLogoffGracePeriod" />
+      <xs:enumeration value="ForceLogoffMessageBody" />
+      <xs:enumeration value="ForceLogoffMessageTitle" />
+      <xs:enumeration value="FRAdminAccess_Part" />
+      <xs:enumeration value="FramehawkDisplayChannelPortRange" />
+      <xs:enumeration value="FramesPerSecond" />
+      <xs:enumeration value="FRAdminAccess_Part" />
+      <xs:enumeration value="FRAdminAccessPath_Part" />
+      <xs:enumeration value="FRAppData_Part" />
+      <xs:enumeration value="FRAppDataPath_Part" />
+      <xs:enumeration value="FRContacts_Part" />
+      <xs:enumeration value="FRContactsPath_Part" />
+      <xs:enumeration value="FRDesktop_Part" />
+      <xs:enumeration value="FRDesktopPath_Part" />
+      <xs:enumeration value="FRDocuments_Part" />
+      <xs:enumeration value="FRDocumentsPath_Part" />
+      <xs:enumeration value="FRDownloads_Part" />
+      <xs:enumeration value="FRDownloadsPath_Part" />
+      <xs:enumeration value="FRFavorites_Part" />
+      <xs:enumeration value="FRFavoritesEnable" />
+      <xs:enumeration value="FRFavoritesPath_Part" />
+      <xs:enumeration value="FRIncDomainName_Part" />
+      <xs:enumeration value="FRLinks_Part" />
+      <xs:enumeration value="FRLinksPath_Part" />
+      <xs:enumeration value="FRMusic_Part" />
+      <xs:enumeration value="FRMusicPath_Part" />
+      <xs:enumeration value="FRPictures_Part" />
+      <xs:enumeration value="FRPicturesPath_Part" />
+      <xs:enumeration value="FRSavedGames_Part" />
+      <xs:enumeration value="FRSavedGamesPath_Part" />
+      <xs:enumeration value="FRSearches_Part" />
+      <xs:enumeration value="FRSearchesPath_Part" />
+      <xs:enumeration value="FRStartMenu_Part" />
+      <xs:enumeration value="FRStartMenuPath_Part" />
+      <xs:enumeration value="FRVideos_Part" />
+      <xs:enumeration value="FRVideosPath_Part" />      
+      <xs:enumeration value="FullIconCaching" />
+      <xs:enumeration value="GenericUniversalPrinterAutoCreation" />
+      <xs:enumeration value="GraphicsQuality" />
+      <xs:enumeration value="HDXAdaptiveTransport" />
+      <xs:enumeration value="HDXFlashLoadManagement" />
+      <xs:enumeration value="HDXFlashLoadManagementErrorSwf" />
+      <xs:enumeration value="HDXMultimediaBandwidthLimit" />
+      <xs:enumeration value="HDXMultimediaBandwidthPercent" />
+      <xs:enumeration value="HealthMonitoring" />
+      <xs:enumeration value="HealthMonitoringTests" />
+      <xs:enumeration value="HostToClientRedirection" />
+      <xs:enumeration value="HTML5VideoRedirection" />
+      <xs:enumeration value="IcaKeepAlives" />
+      <xs:enumeration value="IcaKeepAliveTimeout" />
+      <xs:enumeration value="ICALatencyMonitoring_Enable" />
+      <xs:enumeration value="ICALatencyMonitoring_Period" />
+      <xs:enumeration value="ICALatencyMonitoring_Threshold" />
+      <xs:enumeration value="IcaListenerPortNumber" />
+      <xs:enumeration value="IcaListenerTimeout" />
+      <xs:enumeration value="IcaRoundTripCalculation" />
+      <xs:enumeration value="IcaRoundTripCalculationInterval" />
+      <xs:enumeration value="IcaRoundTripCalculationWhenIdle" />
+      <xs:enumeration value="IdleTimerInterval" />
+      <xs:enumeration value="ImageCaching" />
+      <xs:enumeration value="ImageCompressionLimit" />
+      <xs:enumeration value="ImageProviderIntegrationEnabled" />
+      <xs:enumeration value="InboxDriverAutoInstallation" />
+      <xs:enumeration value="IncludeListRegistry_Part" />
+      <xs:enumeration value="InitialDatabaseName" />
+      <xs:enumeration value="InitialDatabaseServerName" />
+      <xs:enumeration value="InitialFailoverPartner" />
+      <xs:enumeration value="InitialZone" />
+      <xs:enumeration value="IsolationGroup" />
+      <xs:enumeration value="LastKnownGoodRegistry" />
+      <xs:enumeration value="LegacyGraphicsMode" />
+      <xs:enumeration value="LicenseServerHostName" />
+      <xs:enumeration value="LicenseServerPort" />
+      <xs:enumeration value="LingerDisconnectTimerInterval" />
+      <xs:enumeration value="LingerTerminateTimerInterval" />
+      <xs:enumeration value="LoadBalancedPrintServers" />
+      <xs:enumeration value="LoadEvaluator" />
+      <xs:enumeration value="LoadRetries_Part" />
+      <xs:enumeration value="LocalProfileConflictHandling_Part" />
+      <xs:enumeration value="LocalTimeEstimation" />
+      <xs:enumeration value="LogLevel_ActiveDirectoryActions" />
+      <xs:enumeration value="LogLevel_FileSystemActions" />
+      <xs:enumeration value="LogLevel_FileSystemNotification" />
+      <xs:enumeration value="LogLevel_Information" />
+      <xs:enumeration value="LogLevel_Logoff" />
+      <xs:enumeration value="LogLevel_Logon" />
+      <xs:enumeration value="LogLevel_PolicyUserLogon" />
+      <xs:enumeration value="LogLevel_RegistryActions" />
+      <xs:enumeration value="LogLevel_RegistryDifference" />
+      <xs:enumeration value="LogLevel_UserName" />
+      <xs:enumeration value="LogLevel_Warnings" />
+      <xs:enumeration value="LogoffCheckerStartupDelay" />
+      <xs:enumeration value="LogoffRatherThanTempProfile" />
+      <xs:enumeration value="LossyCompressionLevel" />
+      <xs:enumeration value="LossyCompressionThreshold" />
+      <xs:enumeration value="LptBandwidthLimit" />
+      <xs:enumeration value="LptBandwidthLimitPercent" />
+      <xs:enumeration value="MaximumColorDepth" />
+      <xs:enumeration value="MaximumNumberOfSessions" />
+      <xs:enumeration value="MaximumServersOfflinePercent" />
+      <xs:enumeration value="MaxLogSize_Part" />
+      <xs:enumeration value="MaxSpeexQuality" />
+      <xs:enumeration value="MemoryOptimization" />
+      <xs:enumeration value="MemoryOptimizationDayOfMonth" />
+      <xs:enumeration value="MemoryOptimizationDayOfWeek" />
+      <xs:enumeration value="MemoryOptimizationExcludedPrograms" />
+      <xs:enumeration value="MemoryOptimizationIntervalType" />
+      <xs:enumeration value="MemoryOptimizationTime" />
+      <xs:enumeration value="MemoryUsage" />
+      <xs:enumeration value="MemoryUsageBaseLoad" />
+      <xs:enumeration value="MenuAnimation" />
+      <xs:enumeration value="MicrophoneRedirection" />
+      <xs:enumeration value="MigrateWindowsProfilesToUserStore_Part" />
+      <xs:enumeration value="MinimumAdaptiveDisplayJpegQuality" />
+      <xs:enumeration value="MinimumEncryptionLevel" />
+      <xs:enumeration value="MirrorFoldersList_Part" />
+      <xs:enumeration value="MobileDesktop" />
+      <xs:enumeration value="MovingImageCompressionConfiguration" />
+      <xs:enumeration value="MultimediaAcceleration" />
+      <xs:enumeration value="MultimediaAccelerationDefaultBufferSize" />
+      <xs:enumeration value="MultimediaAccelerationEnableCSF" />
+      <xs:enumeration value="MultimediaAccelerationUseDefaultBufferSize" />
+      <xs:enumeration value="MultimediaConferencing" />
+      <xs:enumeration value="MultimediaOptimization" />
+      <xs:enumeration value="MultiPortPolicy" />
+      <xs:enumeration value="MultiStream" />
+      <xs:enumeration value="MultiStreamPolicy" />
+      <xs:enumeration value="NonPublishedProgramLaunching" />
+      <xs:enumeration value="OemChannelBandwidthLimit" />
+      <xs:enumeration value="OemChannelBandwidthPercent" />
+      <xs:enumeration value="OemChannels" />
+      <xs:enumeration value="OfflineClientTrust" />
+      <xs:enumeration value="OfflineEventLogging" />
+      <xs:enumeration value="OfflineLicensePeriod" />
+      <xs:enumeration value="OfflineSupport" />
+      <xs:enumeration value="OfflineUsers" />
+      <xs:enumeration value="OnlyUseIPv6ControllerRegistration" />
+      <xs:enumeration value="OptimizeDesktopVisualEffects" />
+      <xs:enumeration value="OverallBandwidthLimit" />
+      <xs:enumeration value="PersistentCache" />
+      <xs:enumeration value="PreferredColorDepthForSimpleGraphics" />
+      <xs:enumeration value="PrelaunchDisconnectTimerInterval" />
+      <xs:enumeration value="PrelaunchTerminateTimerInterval" />
+      <xs:enumeration value="PrimarySelectionUpdateMode" />
+      <xs:enumeration value="PrinterAssignments" />
+      <xs:enumeration value="PrinterBandwidthLimit" />
+      <xs:enumeration value="PrinterBandwidthPercent" />
+      <xs:enumeration value="PrinterDriverMappings" />
+      <xs:enumeration value="PrinterPropertiesRetention" />
+      <xs:enumeration value="PrintServersOutOfServiceThreshold" />
+      <xs:enumeration value="ProcessAdmins" />
+      <xs:enumeration value="ProcessCookieFiles" />
+      <xs:enumeration value="ProcessedGroups_Part" />
+      <xs:enumeration value="ProductEdition" />
+      <xs:enumeration value="ProductModel" />
+      <xs:enumeration value="ProfileDeleteDelay_Part" />
+      <xs:enumeration value="ProfileLoadTimeMonitoring_Enable" />
+      <xs:enumeration value="ProfileLoadTimeMonitoring_Threshold" />
+      <xs:enumeration value="ProGraphics" />
+      <xs:enumeration value="ProGraphicsObj" />
+      <xs:enumeration value="ProgressiveCompressionLevel" />
+      <xs:enumeration value="ProgressiveCompressionThreshold" />
+      <xs:enumeration value="ProgressiveHeavyweightCompression" />
+      <xs:enumeration value="PromptForPassword" />
+      <xs:enumeration value="PSAlwaysCache" />
+      <xs:enumeration value="PSAlwaysCache_Part" />
+      <xs:enumeration value="PSEnabled" />
+      <xs:enumeration value="PSMidSessionWriteBack" />
+      <xs:enumeration value="PSMidSessionWriteBackReg" />
+      <xs:enumeration value="PSPendingLockTimeout" />
+      <xs:enumeration value="PSUserGroups_Part" />
+      <xs:enumeration value="PvsImageUpdateDeadlinePeriod" />
+      <xs:enumeration value="PvsIntegrationEnabled" />
+      <xs:enumeration value="QueueingAndTossing" />
+      <xs:enumeration value="ReadonlyClipboard" />
+      <xs:enumeration value="ReadOnlyMappedDrive" />
+      <xs:enumeration value="RebootCustomMessage" />
+      <xs:enumeration value="RebootCustomMessageText" />
+      <xs:enumeration value="RebootDisableLogOnTime" />
+      <xs:enumeration value="RebootMessageBody" />
+      <xs:enumeration value="RebootScheduleFrequency" />
+      <xs:enumeration value="RebootScheduleRandomizationInterval" />
+      <xs:enumeration value="RebootScheduleStartDate" />
+      <xs:enumeration value="RebootScheduleTime" />
+      <xs:enumeration value="RebootWarningInterval" />
+      <xs:enumeration value="RebootWarningMessage" />
+      <xs:enumeration value="RebootWarningStartTime" />
+      <xs:enumeration value="ReconnectionUiTransparencyLevel" />
+      <xs:enumeration value="RestrictClientClipboardWrite" />
+      <xs:enumeration value="RestrictSessionClipboardWrite" />
+      <xs:enumeration value="RetainedAndRestoredClientPrinters" />
+      <xs:enumeration value="RtpAudioPortRange" />
+      <xs:enumeration value="ScheduledReboots" />
+      <xs:enumeration value="ServiceActive" />
+      <xs:enumeration value="SessionClipboardWriteAllowedFormats" />
+      <xs:enumeration value="SessionConnectionTimer" />
+      <xs:enumeration value="SessionConnectionTimerInterval" />
+      <xs:enumeration value="SessionDisconnectTimer" />
+      <xs:enumeration value="SessionDisconnectTimerInterval" />
+      <xs:enumeration value="SessionIdleTimer" />
+      <xs:enumeration value="SessionIdleTimerInterval" />
+      <xs:enumeration value="SessionImportance" />
+      <xs:enumeration value="SessionPrinters" />
+      <xs:enumeration value="SessionReliabilityConnections" />
+      <xs:enumeration value="SessionReliabilityPort" />
+      <xs:enumeration value="SessionReliabilityTimeout" />
+      <xs:enumeration value="SessionTimeZone" />
+      <xs:enumeration value="ShadowAllowList" />
+      <xs:enumeration value="ShadowDenyList" />
+      <xs:enumeration value="Shadowing" />
+      <xs:enumeration value="ShadowInput" />
+      <xs:enumeration value="ShadowLogging" />
+      <xs:enumeration value="ShadowUserNotification" />
+      <xs:enumeration value="SingleSignOn" />
+      <xs:enumeration value="SingleSignOnCentralStore" />
+      <xs:enumeration value="SiteGUID" />
+      <xs:enumeration value="SpecialFolderRedirection" />
+      <xs:enumeration value="StorefrontAccountsList" />
+      <xs:enumeration value="StreamingExclusionList" />
+      <xs:enumeration value="StreamingExclusionList_Part" />
+      <xs:enumeration value="SyncDirList_Part" />
+      <xs:enumeration value="SyncFileList_Part" />
+      <xs:enumeration value="TargetedMinimumFramesPerSecond" />
+      <xs:enumeration value="TemplateProfileIsMandatory" />
+      <xs:enumeration value="TemplateProfileOverridesLocalProfile" />
+      <xs:enumeration value="TemplateProfileOverridesRoamingProfile" />
+      <xs:enumeration value="TemplateProfilePath" />
+      <xs:enumeration value="TrustXmlRequests" />
+      <xs:enumeration value="TwainBandwidthLimit" />
+      <xs:enumeration value="TwainBandwidthPercent" />
+      <xs:enumeration value="TwainCompressionLevel" />
+      <xs:enumeration value="TwainRedirection" />
+      <xs:enumeration value="UDPAudioOnServer" />
+      <xs:enumeration value="UniversalDriverPriority" />
+      <xs:enumeration value="UniversalPrintDriverUsage" />
+      <xs:enumeration value="UniversalPrinting" />
+      <xs:enumeration value="UniversalPrintingPreviewPreference" />
+      <xs:enumeration value="UPDCompressionDefaults" />
+      <xs:enumeration value="UpsCgpPort" />
+      <xs:enumeration value="UpsEnable" />
+      <xs:enumeration value="UpsHttpPort" />
+      <xs:enumeration value="UpsPrintStreamInputBandwidthLimit" />
+      <xs:enumeration value="URLRedirectionBlackList" />
+      <xs:enumeration value="URLRedirectionWhiteList" />
+      <xs:enumeration value="USBBandwidthLimit" />
+      <xs:enumeration value="USBBandwidthPercent" />
+      <xs:enumeration value="UsbDeviceRedirection" />
+      <xs:enumeration value="UsbDeviceRedirectionRules" />
+      <xs:enumeration value="UsbPlugAndPlayRedirection" />
+      <xs:enumeration value="UseGPUForMultimediaOptimization" />
+      <xs:enumeration value="UseHardwareEncodingForVideoCodec" />
+      <xs:enumeration value="UserSessionLimit" />
+      <xs:enumeration value="UserSessionLimitAffectsAdministrators" />
+      <xs:enumeration value="UserSessionLimitLogging" />
+      <xs:enumeration value="UseVideoCodecForCompression" />
+      <xs:enumeration value="VDAURLs" />
+      <xs:enumeration value="VideoLoadManagement" />
+      <xs:enumeration value="VideoQuality" />
+      <xs:enumeration value="VirtualLoopbackPrograms" />
+      <xs:enumeration value="VirtualLoopbackSupport" />
+      <xs:enumeration value="VisualQuality" />
+      <xs:enumeration value="WaitForPrintersToBeCreated" />
+      <xs:enumeration value="WebSocketsPort" />
+      <xs:enumeration value="WindowContentsVisibleWhileDragging" />
+      <xs:enumeration value="WorkloadName" />
+      <xs:enumeration value="WSTrustedOriginServerList" />
+      <xs:enumeration value="XmlServicePort" />
+    </xs:restriction>  
+  </xs:simpleType>
+  
+  <xs:simpleType name="FilterType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AccessControl" />
+      <xs:enumeration value="BranchRepeater" />
+      <xs:enumeration value="ClientIP" />
+      <xs:enumeration value="ClientName" />
+      <xs:enumeration value="DesktopGroup" />
+      <xs:enumeration value="DesktopKind" />
+      <xs:enumeration value="DesktopTag" />
+      <xs:enumeration value="OU" />
+      <xs:enumeration value="WorkerGroup" />
+      <xs:enumeration value="User" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FilterMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Allow" />
+      <xs:enumeration value="Deny" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AccessMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WithAccessGateway" />
+      <xs:enumeration value="WithoutAccessGateway" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="FilterRecord">
+    <xs:all>
+      <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Mode" type="FilterMode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Enabled" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FilterType" type="FilterType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="FilterValue" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Synopsis" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Path" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ConnectionType" type="AccessMode" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AccessGatewayFarm" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AccessCondition" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DN" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:simpleType name="PrintPaperSize">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A4" />              <!-- DMPAPER_A4 -->
+      <xs:enumeration value="A4Small" />         <!-- DMPAPER_A4SMALL -->
+      <xs:enumeration value="Envelope10" />      <!-- DMPAPER_ENV_10 -->
+      <xs:enumeration value="EnvelopeB5" />      <!-- DMPAPER_ENV_B5 -->
+      <xs:enumeration value="EnvelopeC5" />      <!-- DMPAPER_ENV_C5 -->
+      <xs:enumeration value="EnvelopeDL" />      <!-- DMPAPER_ENV_DL -->
+      <xs:enumeration value="EnvelopeMonarch" /> <!-- DMPAPER_ENV_MONARCH -->
+      <xs:enumeration value="Executive" />       <!-- DMPAPER_EXECUTIVE -->
+      <xs:enumeration value="Legal" />           <!-- DMPAPER_LEGAL -->
+      <xs:enumeration value="Letter" />          <!-- DMPAPER_LETTER -->
+      <xs:enumeration value="LetterSmall" />     <!-- DMPAPER_LETTERSMALL -->
+      <xs:enumeration value="Note" />            <!-- DMPAPER_NOTE -->
+      <xs:enumeration value="Custom" />          <!-- Special -->
+      <xs:enumeration value="Tabloid" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PrintColorMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Color" />
+      <xs:enumeration value="Monochrome" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PrintQualityMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="High" />
+      <xs:enumeration value="Medium" />
+      <xs:enumeration value="Low" />
+      <xs:enumeration value="Draft" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="PrintOrientation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Portrait" />
+      <xs:enumeration value="Landscape" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PrintDuplexMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Simplex" />
+      <xs:enumeration value="Horizontal" />
+      <xs:enumeration value="Vertical" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TrueTypeOption">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bitmap" />
+      <xs:enumeration value="Download" />
+      <xs:enumeration value="Download_Outline" />
+      <xs:enumeration value="Subdev" />
+      <xs:enumeration value="Substitute" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="PrinterSettings">
+    <xs:all>
+      <xs:element name="Name" type="xs:string" minOccurs="0" />
+      <xs:element name="Value" type="xs:string" minOccurs="0" />
+      <xs:element name="OverridePaperSize" type="xs:boolean" />
+      <xs:element name="PaperSize" type="PrintPaperSize" />
+      <xs:element name="Width" type="xs:integer" />
+      <xs:element name="Height" type="xs:integer" />
+      <xs:element name="OverrideCopyCount" type="xs:boolean" />
+      <xs:element name="Collated" type="xs:boolean" />
+      <xs:element name="CopyCount" type="xs:integer" />
+      <xs:element name="OverrideScale" type="xs:boolean" />
+      <xs:element name="Scale" type="xs:integer" />
+      <xs:element name="OverrideColor" type="xs:boolean" />
+      <xs:element name="Color" type="PrintColorMode" />
+      <xs:element name="OverridePrintQuality" type="xs:boolean" />
+      <xs:element name="PrintQuality" type="PrintQualityMode" />
+      <xs:element name="XResolution" type="xs:integer" />
+      <xs:element name="YResolution" type="xs:integer" />
+      <xs:element name="OverrideOrientation" type="xs:boolean" />
+      <xs:element name="Orientation" type="PrintOrientation" />
+      <xs:element name="OverrideDuplex" type="xs:boolean" />
+      <xs:element name="Duplex" type="PrintDuplexMode" />
+      <xs:element name="OverrideFormName" type="xs:boolean" />
+      <xs:element name="FormName" type="xs:string" />
+      <xs:element name="OverrideTrueTypeOption" type="xs:boolean" />
+      <xs:element name="TrueTypeOption" type="TrueTypeOption" />
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="PrinterProperties">
+    <xs:all>
+      <xs:element name="Path" type="xs:string" minOccurs="0" />
+      <xs:element name="Model" type="xs:string" minOccurs="0" />
+      <xs:element name="Location" type="xs:string" minOccurs="0" />
+      <xs:element name="Settings" type="PrinterSettings" minOccurs="0" />
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="PrinterAssignment">
+    <xs:all>
+      <xs:element name="DefaultPrinterOption" type="xs:string" />
+      <xs:element name="SpecificDefaultPrinter" type="xs:string" />
+      <xs:element name="SessionPrinters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SessionPrinter" type="PrinterProperties" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Filters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Filter" type="xs:string" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="HMRTestRecord">
+    <xs:all>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" />
+      <xs:element name="File" type="xs:string" minOccurs="0" />
+      <xs:element name="Interval" type="xs:integer" minOccurs="0" />
+      <xs:element name="RecoveryAction" type="xs:string" minOccurs="0" />
+      <xs:element name="Threshold" type="xs:integer" minOccurs="0" />
+      <xs:element name="Timeout" type="xs:integer" minOccurs="0" />
+      <xs:element name="Arguments" type="xs:string" minOccurs="0" />
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="SettingRecord">
+    <xs:all>
+      <xs:element name="Name" type="SettingType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="State" type="SettingState" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Values" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Value" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CgpPort1" type="xs:integer" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CgpPort2" type="xs:integer" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CgpPort3" type="xs:integer" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CgpPort1Priority" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CgpPort2Priority" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CgpPort3Priority" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Assignments" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Assignment" type="PrinterAssignment" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DefaultPrinterOption" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SpecificDefaultPrinter" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="SessionPrinters" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SessionPrinter" type="PrinterProperties" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HmrTests" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Tests">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Test" type="HMRTestRecord" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="PolicyRecord">
+    <xs:all>
+      <xs:element name="PolicyName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Enabled" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Priority" type="xs:int" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Filters" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Filter" type="FilterRecord" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Settings" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Setting" type="SettingRecord" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:element name="Policies">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="User">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Policy" type="PolicyRecord" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Computer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Policy" type="PolicyRecord" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

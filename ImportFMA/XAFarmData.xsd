@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XAFarmData"
+           targetNamespace="XAFarmData.xsd"
+           xmlns="XAFarmData.xsd"
+           xmlns:NS="XAFarmData.xsd"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="ApplicationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="ServerInstalled" />
+      <xs:enumeration value="ServerDesktop" />
+      <xs:enumeration value="Content" />
+      <xs:enumeration value="StreamedToServer" />
+      <xs:enumeration value="StreamedToClient" />
+      <xs:enumeration value="StreamedToClientOrInstalled" />
+      <xs:enumeration value="StreamedToClientOrStreamedToServer" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="AppCpuPriorityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="BelowNormal" />
+      <xs:enumeration value="Low" />
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="AboveNormal" />
+      <xs:enumeration value="High" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AppAudioType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Basic" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AppEncryptionLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Basic" />
+      <xs:enumeration value="LogOn" />
+      <xs:enumeration value="Bits40" />
+      <xs:enumeration value="Bits56" />
+      <xs:enumeration value="Bits128" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AppColorDepth">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Colors8Bit" />
+      <xs:enumeration value="Colors16Bit" />
+      <xs:enumeration value="Colors32Bit" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AppAccountType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="User" />
+      <xs:enumeration value="Group" />
+      <xs:enumeration value="OrganizationalUnit" />
+      <xs:enumeration value="Country" />
+      <xs:enumeration value="Organization" />
+      <xs:enumeration value="Alias" />
+      <xs:enumeration value="Locality" />
+      <xs:enumeration value="Folder" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="StremingAppCachingOption">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="PreLaunch" />
+      <xs:enumeration value="AtLaunch" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="AppAccountData">
+    <xs:all>
+      <xs:element name="AccountAuthority" type="xs:string" />
+      <xs:element name="AccountDisplayName" type="xs:string" minOccurs="0" />
+      <xs:element name="AccountId" type="xs:string" minOccurs="0" />
+      <xs:element name="AccountName" type="xs:string" />
+      <xs:element name="AccountType" type="AppAccountType" />
+      <xs:element name="OtherName" type="xs:string" minOccurs="0" />
+      <xs:element name="SearchPath" type="xs:string" minOccurs="0" />
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="FileTypeData">
+    <xs:all>
+      <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Executables" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Executable" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Extension" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MimeTypes" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="MimeType" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FileTypeId" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="FileTypeName" type="xs:string" />
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="ApplicationProperties">
+    <xs:all>
+      <xs:element name="AccessSessionConditions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AccessSessionCondition" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AccessSessionConditionsEnabled" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="Accounts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Account" minOccurs="0" maxOccurs="unbounded" type="AppAccountData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddToClientDesktop" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="AddToClientStartMenu" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="AlternateProfiles" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AlternateProfile" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AnonymousConnectionsAllowed" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="ApplicationId" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="ApplicationType" minOccurs="1" maxOccurs="1" type="ApplicationType" />
+      <xs:element name="AudioRequired" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="AudioType" minOccurs="0" maxOccurs="1" type="AppAudioType" />
+      <xs:element name="BrowserName" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="CachingOption" minOccurs="0" maxOccurs="1" type="StremingAppCachingOption" />
+      <xs:element name="ClientFolder" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="CommandLineExecutable" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="ColorDepth" minOccurs="0" maxOccurs="1" type="AppColorDepth" />
+      <xs:element name="ConnectionsThroughAccessGatewayAllowed" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="ContentAddress" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="CpuPriorityLevel" minOccurs="0" maxOccurs="1" type="AppCpuPriorityLevel" />
+      <xs:element name="DeliveryGroup" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="Description" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="DisplayName" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="Enabled" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="EncryptionLevel" minOccurs="0" maxOccurs="1" type="AppEncryptionLevel" />
+      <xs:element name="EncryptionRequired" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="FileTypes" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FileType" minOccurs="0" maxOccurs="unbounded" type="FileTypeData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FolderPath" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="HideWhenDisabled" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="IconData" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="IconFileName" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="InstanceLimit" minOccurs="0" maxOccurs="1" type="xs:integer" />
+      <xs:element name="LoadBalancingApplicationCheckEnabled" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="MaximizedOnStartup" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="MultipleInstancesPerUserAllowed" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="OfflineAccessAllowed" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="OtherConnectionsAllowed" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="PreLaunch" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="ProfileLocation" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="ProfileProgramArguments" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="ProfileProgramName" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="RunAsLeastPrivilegedUser" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="SequenceNumber" minOccurs="0" maxOccurs="1" type="xs:integer" />
+      <xs:element name="Servers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Server" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SslConnectionEnabled" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="StartMenuFolder" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="TitleBarHidden" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="WaitOnPrinterCreation" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+      <xs:element name="WindowType" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="WorkerGroups" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="WorkerGroup" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WorkingDirectory" minOccurs="0" maxOccurs="1" type="xs:string" />
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="ServerProperties">
+    <xs:all>
+      <xs:element name="CitrixEdition" type="xs:string" minOccurs="0" />
+      <xs:element name="CitrixEditionString" type="xs:string" minOccurs="0" />
+      <xs:element name="CitrixInstallDate" type="xs:string" minOccurs="0" />
+      <xs:element name="CitrixInstallPath" type="xs:string" minOccurs="0" />
+      <xs:element name="CitrixProductName" type="xs:string" minOccurs="0" />
+      <xs:element name="CitrixServicePack" type="xs:string" minOccurs="0" />
+      <xs:element name="CitrixVersion" type="xs:string" minOccurs="0" />
+      <xs:element name="ElectionPreference" type="xs:string" minOccurs="0" />
+      <xs:element name="FolderPath" type="xs:string" minOccurs="0" />
+      <xs:element name="IcaPortNumber" type="xs:integer" minOccurs="0" />
+      <xs:element name="IPAddresses" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IPAddress" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Is64Bit" type="xs:boolean" minOccurs="0" />
+      <xs:element name="IsSpoolerHealthy" type="xs:boolean" minOccurs="0" />
+      <xs:element name="LicenseServerName" type="xs:string" minOccurs="0" />
+      <xs:element name="LicenseServerPortNumber" type="xs:integer" minOccurs="0" />
+      <xs:element name="LogOnMode" type="xs:string" minOccurs="0" />
+      <xs:element name="LogOnsEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="OSServicePack" type="xs:string" minOccurs="0" />
+      <xs:element name="OSVersion" type="xs:string" minOccurs="0" />
+      <xs:element name="PcmMode" type="xs:string" minOccurs="0" />
+      <xs:element name="RdpPortNumber" type="xs:integer" minOccurs="0" />
+      <xs:element name="ServerFqdn" type="xs:string" minOccurs="0" />
+      <xs:element name="ServerId" type="xs:string" minOccurs="0" />
+      <xs:element name="ServerName" type="xs:string" minOccurs="0" />
+      <xs:element name="SessionCount" type="xs:integer" minOccurs="0" />
+      <xs:element name="ZoneName" type="xs:string" minOccurs="0" />
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="LoadParameters">
+    <xs:all>
+      <xs:element name="NoLoad" type="xs:integer" />
+      <xs:element name="FullLoad" type="xs:integer" />
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="ScheduleArray">
+    <xs:sequence>
+      <xs:element name="TimeOfDay" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="LoadEvaluatorProperties">
+    <xs:all>
+      <xs:element name="ApplicationUserLoad" type="xs:integer" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ApplicationUserLoadEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="ApplicationBrowserName" type="xs:string" minOccurs="0" />
+      <xs:element name="ContextSwitches" type="LoadParameters" minOccurs="0" />
+      <xs:element name="ContextSwitchesEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="CpuUtilization" type="LoadParameters" minOccurs="0" />
+      <xs:element name="CpuUtilizationEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" />
+      <xs:element name="DiskDataIO" type="LoadParameters" minOccurs="0" />
+      <xs:element name="DiskDataIOEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="DiskOperations" type="LoadParameters" minOccurs="0" />
+      <xs:element name="DiskOperationsEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="IPRanges" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IPRange" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IPRangesAllowed" type="xs:boolean" minOccurs="0" />
+      <xs:element name="IPRangesEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="IsBuiltIn" type="xs:boolean" minOccurs="0" />
+      <xs:element name="LoadEvaluatorId" type="xs:string" minOccurs="0" />
+      <xs:element name="LoadEvaluatorName" type="xs:string" minOccurs="0" />
+      <xs:element name="LoadThrottling" type="xs:string" minOccurs="0" />
+      <xs:element name="LoadThrottlingEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="MemoryUsage" type="LoadParameters" minOccurs="0" />
+      <xs:element name="MemoryUsageEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="PageFaults" type="LoadParameters" minOccurs="0" />
+      <xs:element name="PageFaultsEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="PageSwaps" type="LoadParameters" minOccurs="0" />
+      <xs:element name="PageSwapsEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="ScheduleEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="SundaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="MondaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="TuesdaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="WednesdaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="ThursdaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="FridaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="SaturdaySchedule" type="ScheduleArray" minOccurs="0" />
+      <xs:element name="ServerUserLoad" type="xs:integer" minOccurs="0" />
+      <xs:element name="ServerUserLoadEnabled" type="xs:boolean" minOccurs="0" />
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="WorkerGroupProperties">
+    <xs:all>
+      <xs:element name="Description" type="xs:string" minOccurs="0" />
+      <xs:element name="FolderPath" type="xs:string" minOccurs="0" />
+      <xs:element name="WorkerGroupName" type="xs:string" minOccurs="0" />
+      <xs:element name="WorkerGroupId" type="xs:string" minOccurs="0" />
+      <xs:element name="ServerNames" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ServerName" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OUs" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="OU" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ServerGroups" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ServerGroup" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="LoadBalancingPolicyProperties">
+    <xs:all>
+      <xs:element name="PolicyName" type="xs:string" minOccurs="0" />
+      <xs:element name="PolicyId" type="xs:string" minOccurs="0" />
+      <xs:element name="Description" type="xs:string" minOccurs="0" />
+      <xs:element name="Enabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="Priority" type="xs:integer" minOccurs="0" />
+      <xs:element name="WorkerGroupPreferenceAndFailoverState" type="xs:string" minOccurs="0" />
+      <xs:element name="WorkerGroupPreferences" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="WorkerGroupPreference" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StreamingDeliveryProtocolState" type="xs:string" minOccurs="0" />
+      <xs:element name="StreamingDeliveryOption" type="xs:string" minOccurs="0" />
+      <xs:element name="AccessControlEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="AllowConnectionsThroughAccessGateway" type="xs:boolean" minOccurs="0" />
+      <xs:element name="AllowOtherConnections" type="xs:boolean" minOccurs="0" />
+      <xs:element name="AccessSessionConditions" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AccessSessionCondition" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientIPAddressEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="ApplyToAllClientIPAddresses" type="xs:boolean" minOccurs="0" />
+      <xs:element name="AllowedIPAddresses" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AllowedIPAddress" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeniedIPAddresses" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DeniedIPAddresses" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClientNameEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="ApplyToAllClientNames" type="xs:boolean" minOccurs="0" />
+      <xs:element name="AllowedClientNames" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AllowedClientName" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeniedClientNames" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DeniedClientName" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AccountEnabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="ApplyToAllExplicitAccounts" type="xs:boolean" minOccurs="0" />
+      <xs:element name="ApplyToAnonymousAccounts" type="xs:boolean" minOccurs="0" />
+      <xs:element name="AllowedAccounts" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AllowedAccount" type="AppAccountData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeniedAccounts" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DeniedAccount" type="AppAccountData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="PrinterDriverProperties">
+    <xs:all>
+      <xs:element name="DriverName" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ServerName" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DriverId" type="xs:string" minOccurs="0" />
+      <xs:element name="Length" type="xs:integer" minOccurs="0" />
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="AdministratorProperties">
+    <xs:all>
+      <xs:element name="AdministratorId" type="xs:string" minOccurs="0" />
+      <xs:element name="AdministratorName" type="xs:string" minOccurs="0" />
+      <xs:element name="AdministratorType" type="xs:string" minOccurs="0" />
+      <xs:element name="Enabled" type="xs:boolean" minOccurs="0" />
+      <xs:element name="FarmPrivileges" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FarmPrivilege" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FolderPrivileges" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FolderPrivilege" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:all>
+                  <xs:element name="FolderPath" minOccurs="0" type="xs:string" />
+                  <xs:element name="FolderPrivileges" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="FolderPrivilege" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:all>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  
+  <xs:element name="Farm">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="FarmName" minOccurs="0" maxOccurs="1" type="xs:string" />
+        <xs:element name="ConfigurationLogging" minOccurs="0">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="AuthenticationMode" type="xs:string" minOccurs="0" />
+              <xs:element name="ChangesWhileDisconnectedAllowed" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ConnectionString" type="xs:string" minOccurs="0" />
+              <xs:element name="CredentialsOnClearLogRequired" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DatabaseType" type="xs:string" minOccurs="0" />
+              <xs:element name="LoggingEnabled" type="xs:boolean" minOccurs="0" />
+              <xs:element name="UserName" type="xs:string" minOccurs="0" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Administrators" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Administrator" minOccurs="1" maxOccurs="unbounded" type="AdministratorProperties" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Applications" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Application" minOccurs="0" maxOccurs="unbounded" type="ApplicationProperties" />
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Servers" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Server" minOccurs="0" maxOccurs="unbounded" type="ServerProperties" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoadEvaluators" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoadEvaluator" minOccurs="0" maxOccurs="unbounded" type="LoadEvaluatorProperties" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoadBalancingPolicies" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LoadBalancingPolicy" minOccurs="0" maxOccurs="unbounded" type="LoadBalancingPolicyProperties" />
+             </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PrinterDrivers" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PrinterDriver" minOccurs="0" maxOccurs="unbounded" type="PrinterDriverProperties" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="WorkerGroups" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="WorkerGroup" minOccurs="0" maxOccurs="unbounded" type="WorkerGroupProperties" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Zones" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Zone" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="ZoneName" type="xs:string" minOccurs="0" />
+                    <xs:element name="DataCollector" type="xs:string" minOccurs="0" />
+                    <xs:element name="Servers" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Server" type="ServerProperties" minOccurs="1" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                  <xs:attribute name="Name" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
